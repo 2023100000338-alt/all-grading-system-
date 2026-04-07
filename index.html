@@ -2,117 +2,250 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>GradeMaster BD | SSC HSC GPA & University CGPA Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>GradeMaster Pro | Bangladesh GPA & CGPA Calculator</title>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-<div class="app-container">
-    <div class="header-bar">
-        <div class="logo-area">
-            <h1>📊 GradeMaster BD</h1>
-            <p>SSC | HSC | University CGPA — official Bangladesh grading system</p>
-        </div>
-        <button class="theme-toggle" id="themeToggleBtn">🌓 Light/Dark</button>
-    </div>
+    <!-- Mobile Menu Button -->
+    <button class="mobile-menu-btn" id="mobileMenuBtn">
+        <i class="fas fa-bars"></i>
+    </button>
 
-    <!-- Navigation Buttons -->
-    <div class="nav-pills">
-        <button class="nav-btn active" data-tab="ssc">🎓 SSC GPA</button>
-        <button class="nav-btn" data-tab="hsc">📘 HSC GPA</button>
-        <button class="nav-btn" data-tab="cgpa">🏛️ University CGPA</button>
-        <button class="nav-btn" data-tab="gradetable">📋 Grade Scale</button>
-    </div>
-
-    <!-- SSC SECTION -->
-    <div id="sscSection" class="section active-section">
-        <div class="card">
-            <h3>📚 SSC Grade Point Average (with 4th subject bonus)</h3>
-            <p class="info-text">Group selection & optional 4th subject (lowest bonus). Automatic 4th subject handling: Only extra points above GPA 2.00 count.</p>
-            <div class="form-group">
-                <label>Group</label>
-                <select id="sscGroup">
-                    <option value="Science">Science</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Arts">Arts</option>
-                </select>
+    <!-- Desktop Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">GradeMaster<span>Pro</span></div>
             </div>
-            <div id="sscSubjectsContainer"></div>
-            <button class="add-btn" id="addSscSubjectBtn">+ Add Custom Subject</button>
-            <button class="btn-primary" id="calcSscBtn">📐 Calculate SSC GPA</button>
-            <div id="sscResult" class="result-box" style="display: none;"></div>
+            <button class="sidebar-close" id="sidebarClose">
+                <i class="fas fa-times"></i>
+            </button>
         </div>
-    </div>
+        
+        <nav class="sidebar-nav">
+            <button class="nav-item active" data-tab="ssc">
+                <i class="fas fa-school"></i>
+                <span>SSC GPA</span>
+                <small>Secondary School</small>
+            </button>
+            <button class="nav-item" data-tab="hsc">
+                <i class="fas fa-book-open"></i>
+                <span>HSC GPA</span>
+                <small>Higher Secondary</small>
+            </button>
+            <button class="nav-item" data-tab="cgpa">
+                <i class="fas fa-university"></i>
+                <span>University CGPA</span>
+                <small>Bachelor/Master</small>
+            </button>
+            <button class="nav-item" data-tab="gradetable">
+                <i class="fas fa-chart-line"></i>
+                <span>Grade Scale</span>
+                <small>Reference Guide</small>
+            </button>
+        </nav>
 
-    <!-- HSC SECTION -->
-    <div id="hscSection" class="section">
-        <div class="card">
-            <h3>📖 HSC Grade Point Average (4th subject bonus)</h3>
-            <p class="info-text">Select group, subjects include 4th subject (bonus applicable).</p>
-            <div class="form-group">
-                <label>Group</label>
-                <select id="hscGroup">
-                    <option value="Science">Science</option>
-                    <option value="Commerce">Commerce</option>
-                    <option value="Arts">Arts</option>
-                </select>
+        <div class="sidebar-footer">
+            <button class="theme-toggle-sidebar" id="themeToggleSidebar">
+                <i class="fas fa-moon"></i>
+                <span>Dark Mode</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Floating Theme Toggle -->
+        <button class="floating-theme-toggle" id="floatingThemeToggle">
+            <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- SSC Section -->
+        <section id="sscSection" class="content-section active">
+            <div class="section-header">
+                <div class="header-badge">
+                    <i class="fas fa-school"></i> SSC
+                </div>
+                <h1>SSC GPA Calculator</h1>
+                <p>Calculate your SSC GPA with 4th subject bonus | Science, Commerce & Arts</p>
             </div>
-            <div id="hscSubjectsContainer"></div>
-            <button class="add-btn" id="addHscSubjectBtn">+ Add Subject</button>
-            <button class="btn-primary" id="calcHscBtn">📐 Calculate HSC GPA</button>
-            <div id="hscResult" class="result-box" style="display: none;"></div>
-        </div>
-    </div>
 
-    <!-- UNIVERSITY CGPA SECTION - Embedded External Calculator -->
-    <div id="cgpaSection" class="section">
-        <div class="card" style="padding: 0; overflow: hidden;">
-            <iframe 
-                src="https://eb-cgpa-calculator.vercel.app/" 
-                style="width: 100%; min-height: 650px; border: none; display: block;"
-                title="University CGPA Calculator"
-                loading="lazy"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                referrerpolicy="strict-origin-when-cross-origin">
-            </iframe>
-        </div>
-        <p class="info-text" style="text-align: center; margin-top: 0.5rem;">
-            🔗 Powered by external CGPA calculator | 
-            <a href="https://eb-cgpa-calculator.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Open in new tab ↗</a>
-        </p>
-    </div>
-
-    <!-- GRADE TABLE SECTION -->
-    <div id="gradetableSection" class="section">
-        <div class="card">
-            <h3>📊 Bangladesh Grading System (SSC/HSC & University)</h3>
-            <div class="responsive-table">
-                <table class="grade-table">
-                    <thead>
-                        <tr>
-                            <th>Marks Range</th>
-                            <th>Letter Grade</th>
-                            <th>Grade Point (4.0/5.0 scale)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr><td>80 - 100</td><td>A+</td><td>5.00 (SSC/HSC) / 4.00 (Univ)</td></tr>
-                        <tr><td>70 - 79</td><td>A</td><td>4.00</td></tr>
-                        <tr><td>60 - 69</td><td>A-</td><td>3.50</td></tr>
-                        <tr><td>50 - 59</td><td>B</td><td>3.00</td></tr>
-                        <tr><td>40 - 49</td><td>C</td><td>2.00</td></tr>
-                        <tr><td>33 - 39</td><td>D</td><td>1.00</td></tr>
-                        <tr><td>0 - 32</td><td>F</td><td>0.00</td></tr>
-                    </tbody>
-                </table>
+            <div class="calculator-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Subject Details</h3>
+                    <div class="group-selector">
+                        <label>Select Group:</label>
+                        <select id="sscGroup" class="group-select">
+                            <option value="Science">🔬 Science</option>
+                            <option value="Commerce">📊 Commerce</option>
+                            <option value="Arts">🎨 Arts</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="sscSubjectsContainer" class="subjects-grid"></div>
+                
+                <div class="action-buttons">
+                    <button class="btn-add" id="addSscSubjectBtn">
+                        <i class="fas fa-plus"></i> Add Subject
+                    </button>
+                    <button class="btn-calculate" id="calcSscBtn">
+                        <i class="fas fa-calculator"></i> Calculate GPA
+                    </button>
+                    <button class="btn-reset" id="resetSscBtn">
+                        <i class="fas fa-undo-alt"></i> Reset
+                    </button>
+                </div>
+                
+                <div id="sscResult" class="result-card" style="display: none;"></div>
             </div>
-            <p class="info-text">* For SSC/HSC: 4th subject bonus adds (GP - 2) if GP > 2.00. Fail in any main subject → GPA 0.00.</p>
-        </div>
-    </div>
-    <footer>© GradeMaster BD — accurate calculation based as per Bangladesh education board rules.</footer>
-</div>
+        </section>
 
-<script src="script.js"></script>
+        <!-- HSC Section -->
+        <section id="hscSection" class="content-section">
+            <div class="section-header">
+                <div class="header-badge">
+                    <i class="fas fa-book-open"></i> HSC
+                </div>
+                <h1>HSC GPA Calculator</h1>
+                <p>Calculate your HSC GPA with 4th subject bonus | Science, Commerce & Arts</p>
+            </div>
+
+            <div class="calculator-card">
+                <div class="card-header">
+                    <h3><i class="fas fa-list"></i> Subject Details</h3>
+                    <div class="group-selector">
+                        <label>Select Group:</label>
+                        <select id="hscGroup" class="group-select">
+                            <option value="Science">🔬 Science</option>
+                            <option value="Commerce">📊 Commerce</option>
+                            <option value="Arts">🎨 Arts</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="hscSubjectsContainer" class="subjects-grid"></div>
+                
+                <div class="action-buttons">
+                    <button class="btn-add" id="addHscSubjectBtn">
+                        <i class="fas fa-plus"></i> Add Subject
+                    </button>
+                    <button class="btn-calculate" id="calcHscBtn">
+                        <i class="fas fa-calculator"></i> Calculate GPA
+                    </button>
+                    <button class="btn-reset" id="resetHscBtn">
+                        <i class="fas fa-undo-alt"></i> Reset
+                    </button>
+                </div>
+                
+                <div id="hscResult" class="result-card" style="display: none;"></div>
+            </div>
+        </section>
+
+        <!-- University CGPA Section -->
+        <section id="cgpaSection" class="content-section">
+            <div class="section-header">
+                <div class="header-badge">
+                    <i class="fas fa-university"></i> University
+                </div>
+                <h1>University CGPA Calculator</h1>
+                <p>Calculate your CGPA with credit hour system</p>
+            </div>
+            
+            <div class="cgpa-wrapper">
+                <iframe 
+                    src="https://eb-cgpa-calculator.vercel.app/" 
+                    class="cgpa-iframe"
+                    title="University CGPA Calculator"
+                    loading="lazy">
+                </iframe>
+                <div class="iframe-footer">
+                    <a href="https://eb-cgpa-calculator.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        <i class="fas fa-external-link-alt"></i> Open in new tab
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Grade Scale Section -->
+        <section id="gradetableSection" class="content-section">
+            <div class="section-header">
+                <div class="header-badge">
+                    <i class="fas fa-chart-line"></i> Reference
+                </div>
+                <h1>Bangladesh Grading System</h1>
+                <p>Official grade scale for SSC, HSC & University</p>
+            </div>
+            
+            <div class="grade-card">
+                <div class="grade-table-wrapper">
+                    <table class="grade-table">
+                        <thead>
+                            <tr>
+                                <th>Marks Range</th>
+                                <th>Letter Grade</th>
+                                <th>Grade Point</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>80 - 100</td><td>A+</td><td>5.00 / 4.00</td><td class="success-text">Outstanding</td></tr>
+                            <tr class="grade-row"><td>70 - 79</td><td>A</td><td>4.00</td><td class="success-text">Excellent</td></tr>
+                            <tr class="grade-row"><td>60 - 69</td><td>A-</td><td>3.50</td><td>Very Good</td></tr>
+                            <tr class="grade-row"><td>50 - 59</td><td>B</td><td>3.00</td><td>Good</td></tr>
+                            <tr class="grade-row"><td>40 - 49</td><td>C</td><td>2.00</td><td>Satisfactory</td></tr>
+                            <tr class="grade-row"><td>33 - 39</td><td>D</td><td>1.00</td><td>Pass</td></tr>
+                            <tr class="fail-row"><td>0 - 32</td><td>F</td><td>0.00</td><td class="danger-text">Fail</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="grade-info">
+                    <div class="info-box">
+                        <i class="fas fa-info-circle"></i>
+                        <div>
+                            <strong>4th Subject Bonus</strong>
+                            <p>If GPA in 4th subject > 2.00, bonus = (GPA - 2) added to total. Maximum GPA = 5.00</p>
+                        </div>
+                    </div>
+                    <div class="info-box">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <div>
+                            <strong>Fail Rule</strong>
+                            <p>Failing any main subject results in GPA 0.00</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Navigation for Mobile -->
+        <nav class="bottom-nav">
+            <button class="bottom-nav-item active" data-tab="ssc">
+                <i class="fas fa-school"></i>
+                <span>SSC</span>
+            </button>
+            <button class="bottom-nav-item" data-tab="hsc">
+                <i class="fas fa-book-open"></i>
+                <span>HSC</span>
+            </button>
+            <button class="bottom-nav-item" data-tab="cgpa">
+                <i class="fas fa-university"></i>
+                <span>CGPA</span>
+            </button>
+            <button class="bottom-nav-item" data-tab="gradetable">
+                <i class="fas fa-chart-line"></i>
+                <span>Grades</span>
+            </button>
+        </nav>
+    </main>
+
+    <script src="script.js"></script>
 </body>
 </html>
