@@ -194,8 +194,12 @@ const hscManager = new ExamManager('hscSubjectsContainer', 'hscGroup', 'addHscSu
 
 // Navigation
 const navItems = document.querySelectorAll('.nav-item, .bottom-nav-item');
-const sections = ['ssc', 'hsc', 'cgpa', 'gradetable'];
+// Update the sections array in your existing script.js
+// Find this line and update it:
 
+const sections = ['ssc', 'hsc', 'cgpa', 'gradetable', 'about'];
+
+// The rest of your script.js remains the same
 function switchTab(tabId) {
     sections.forEach(section => {
         const sectionEl = document.getElementById(`${section}Section`);

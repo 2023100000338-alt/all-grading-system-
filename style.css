@@ -999,3 +999,213 @@ body {
         justify-content: center;
     }
 }
+/* Add to your existing style.css */
+
+/* About Section Styles */
+.about-card {
+    background: var(--surface);
+    border-radius: var(--radius-lg);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+}
+
+.about-header {
+    background: var(--primary-gradient);
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.about-avatar {
+    width: 80px;
+    height: 80px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.about-title h2 {
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 0.25rem;
+}
+
+.about-title p {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.about-content {
+    padding: 2rem;
+}
+
+.about-bio {
+    margin-bottom: 2rem;
+}
+
+.about-bio h3, .about-skills h3, .about-education h3 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.about-bio p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.about-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: var(--surface-alt);
+    border-radius: var(--radius);
+}
+
+.stat-item i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.stat-item strong {
+    font-size: 1.5rem;
+    display: block;
+    color: var(--text);
+}
+
+.stat-item span {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.skills-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.skill-tag {
+    padding: 0.5rem 1rem;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 2rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.skill-tag:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.education-item {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    background: var(--surface-alt);
+    border-radius: var(--radius);
+}
+
+.education-item strong {
+    display: block;
+    color: var(--text);
+    margin-bottom: 0.25rem;
+}
+
+.education-item p {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+.about-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.about-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.about-btn.portfolio {
+    background: var(--primary-gradient);
+    color: white;
+}
+
+.about-btn.github {
+    background: var(--surface-alt);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.about-btn.linkedin {
+    background: #0077b5;
+    color: white;
+}
+
+.about-btn.email {
+    background: var(--danger-gradient);
+    color: white;
+}
+
+.about-btn:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.05);
+}
+
+/* Mobile Responsive for About */
+@media (max-width: 768px) {
+    .about-header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .about-title {
+        text-align: center;
+    }
+    
+    .about-content {
+        padding: 1.5rem;
+    }
+    
+    .about-stats {
+        grid-template-columns: 1fr;
+    }
+    
+    .about-links {
+        justify-content: center;
+    }
+    
+    .stat-item {
+        justify-content: center;
+    }
+}
