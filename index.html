@@ -2,133 +2,117 @@
 <html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>GPA Master Pro - Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>GradeMaster BD | SSC HSC GPA & University CGPA Calculator</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="dashboard-container">
-        <aside class="sidebar">
-            <div class="logo">
-                <i data-lucide="shield-check"></i>
-                <span>GPA PRO</span>
-            </div>
-            <nav class="nav-links">
-                <button class="nav-item active" onclick="showSection('calculator')">
-                    <i data-lucide="layout-dashboard"></i> Calculator
-                </button>
-                <button class="nav-item" onclick="showSection('grades')">
-                    <i data-lucide="table-2"></i> Grade Table
-                </button>
-                <button class="nav-item" id="themeToggle">
-                    <i data-lucide="moon" id="themeIcon"></i> Appearance
-                </button>
-            </nav>
-        </aside>
-
-        <main class="main-content">
-            <section id="calculatorSection" class="content-section">
-                <header class="section-header-main">
-                    <h2>GPA Calculator</h2>
-                    <p>Calculate SSC/HSC results with 4th subject bonus.</p>
-                </header>
-
-                <div class="card config-card">
-                    <div class="input-row">
-                        <div class="input-group">
-                            <label>Exam Type</label>
-                            <select id="examType">
-                                <option>SSC</option>
-                                <option>HSC</option>
-                            </select>
-                        </div>
-                        <div class="input-group">
-                            <label>Group</label>
-                            <select id="groupSelect">
-                                <option value="Science">Science</option>
-                                <option value="Commerce">Commerce</option>
-                                <option value="Arts">Arts</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="card subjects-card">
-                    <div class="card-header">
-                        <h3>Subjects</h3>
-                        <button id="addSubjectBtn" class="btn-add">
-                            <i data-lucide="plus"></i> Add
-                        </button>
-                    </div>
-                    <div id="subjectsList" class="subjects-list"></div>
-                    
-                    <div class="actions">
-                        <button id="calculateBtn" class="btn-primary">Calculate Result</button>
-                        <button id="resetBtn" class="btn-secondary"><i data-lucide="refresh-cw"></i></button>
-                    </div>
-                </div>
-
-                <div id="resultCard" class="card result-card hidden">
-                    <div class="result-grid">
-                        <div class="gpa-display">
-                            <span id="finalGPA">0.00</span>
-                            <p>Final GPA</p>
-                        </div>
-                        <div class="grade-info">
-                            <h2 id="finalGrade">-</h2>
-                            <p id="failMessage" class="fail-text hidden">Status: FAILED</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="gradesSection" class="content-section hidden">
-                <header class="section-header-main">
-                    <h2>Grading System</h2>
-                    <p>Standard Bangladesh Education Board Scale.</p>
-                </header>
-                <div class="card overflow-x">
-                    <table class="grade-table">
-                        <thead>
-                            <tr>
-                                <th>Marks Range</th>
-                                <th>Letter Grade</th>
-                                <th>GPA</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td>80 – 100</td><td>A+</td><td>5.00</td></tr>
-                            <tr class="highlight"><td>70 – 79</td><td>A</td><td>4.00</td></tr>
-                            <tr><td>60 – 69</td><td>A-</td><td>3.50</td></tr>
-                            <tr class="highlight"><td>50 – 59</td><td>B</td><td>3.00</td></tr>
-                            <tr><td>40 – 49</td><td>C</td><td>2.00</td></tr>
-                            <tr class="highlight"><td>33 – 39</td><td>D</td><td>1.00</td></tr>
-                            <tr class="danger-row"><td>00 – 32</td><td>F</td><td>0.00</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </section>
-        </main>
-
-        <nav class="mobile-nav">
-            <button class="mobile-nav-item active" onclick="showSection('calculator')">
-                <i data-lucide="calculator"></i>
-                <span>Calc</span>
-            </button>
-            <button class="mobile-nav-item" onclick="showSection('grades')">
-                <i data-lucide="table-2"></i>
-                <span>Grades</span>
-            </button>
-            <button class="mobile-nav-item" id="mobileThemeToggle">
-                <i data-lucide="moon"></i>
-                <span>Theme</span>
-            </button>
-        </nav>
+<div class="app-container">
+    <div class="header-bar">
+        <div class="logo-area">
+            <h1>📊 GradeMaster BD</h1>
+            <p>SSC | HSC | University CGPA — official Bangladesh grading system</p>
+        </div>
+        <button class="theme-toggle" id="themeToggleBtn">🌓 Light/Dark</button>
     </div>
 
-    <script src="script.js"></script>
-    <script>lucide.createIcons();</script>
+    <!-- Navigation Buttons -->
+    <div class="nav-pills">
+        <button class="nav-btn active" data-tab="ssc">🎓 SSC GPA</button>
+        <button class="nav-btn" data-tab="hsc">📘 HSC GPA</button>
+        <button class="nav-btn" data-tab="cgpa">🏛️ University CGPA</button>
+        <button class="nav-btn" data-tab="gradetable">📋 Grade Scale</button>
+    </div>
+
+    <!-- SSC SECTION -->
+    <div id="sscSection" class="section active-section">
+        <div class="card">
+            <h3>📚 SSC Grade Point Average (with 4th subject bonus)</h3>
+            <p class="info-text">Group selection & optional 4th subject (lowest bonus). Automatic 4th subject handling: Only extra points above GPA 2.00 count.</p>
+            <div class="form-group">
+                <label>Group</label>
+                <select id="sscGroup">
+                    <option value="Science">Science</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Arts">Arts</option>
+                </select>
+            </div>
+            <div id="sscSubjectsContainer"></div>
+            <button class="add-btn" id="addSscSubjectBtn">+ Add Custom Subject</button>
+            <button class="btn-primary" id="calcSscBtn">📐 Calculate SSC GPA</button>
+            <div id="sscResult" class="result-box" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- HSC SECTION -->
+    <div id="hscSection" class="section">
+        <div class="card">
+            <h3>📖 HSC Grade Point Average (4th subject bonus)</h3>
+            <p class="info-text">Select group, subjects include 4th subject (bonus applicable).</p>
+            <div class="form-group">
+                <label>Group</label>
+                <select id="hscGroup">
+                    <option value="Science">Science</option>
+                    <option value="Commerce">Commerce</option>
+                    <option value="Arts">Arts</option>
+                </select>
+            </div>
+            <div id="hscSubjectsContainer"></div>
+            <button class="add-btn" id="addHscSubjectBtn">+ Add Subject</button>
+            <button class="btn-primary" id="calcHscBtn">📐 Calculate HSC GPA</button>
+            <div id="hscResult" class="result-box" style="display: none;"></div>
+        </div>
+    </div>
+
+    <!-- UNIVERSITY CGPA SECTION - Embedded External Calculator -->
+    <div id="cgpaSection" class="section">
+        <div class="card" style="padding: 0; overflow: hidden;">
+            <iframe 
+                src="https://eb-cgpa-calculator.vercel.app/" 
+                style="width: 100%; min-height: 650px; border: none; display: block;"
+                title="University CGPA Calculator"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                referrerpolicy="strict-origin-when-cross-origin">
+            </iframe>
+        </div>
+        <p class="info-text" style="text-align: center; margin-top: 0.5rem;">
+            🔗 Powered by external CGPA calculator | 
+            <a href="https://eb-cgpa-calculator.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--primary);">Open in new tab ↗</a>
+        </p>
+    </div>
+
+    <!-- GRADE TABLE SECTION -->
+    <div id="gradetableSection" class="section">
+        <div class="card">
+            <h3>📊 Bangladesh Grading System (SSC/HSC & University)</h3>
+            <div class="responsive-table">
+                <table class="grade-table">
+                    <thead>
+                        <tr>
+                            <th>Marks Range</th>
+                            <th>Letter Grade</th>
+                            <th>Grade Point (4.0/5.0 scale)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>80 - 100</td><td>A+</td><td>5.00 (SSC/HSC) / 4.00 (Univ)</td></tr>
+                        <tr><td>70 - 79</td><td>A</td><td>4.00</td></tr>
+                        <tr><td>60 - 69</td><td>A-</td><td>3.50</td></tr>
+                        <tr><td>50 - 59</td><td>B</td><td>3.00</td></tr>
+                        <tr><td>40 - 49</td><td>C</td><td>2.00</td></tr>
+                        <tr><td>33 - 39</td><td>D</td><td>1.00</td></tr>
+                        <tr><td>0 - 32</td><td>F</td><td>0.00</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="info-text">* For SSC/HSC: 4th subject bonus adds (GP - 2) if GP > 2.00. Fail in any main subject → GPA 0.00.</p>
+        </div>
+    </div>
+    <footer>© GradeMaster BD — accurate calculation based as per Bangladesh education board rules.</footer>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
