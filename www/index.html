@@ -363,6 +363,26 @@
                         <a href="mailto:emadbhuiyan9@gmail.com" class="about-btn email"><i class="fas fa-envelope"></i>
                             Email</a>
                     </div>
+                    <div class="apk-download-card">
+                        <div class="apk-header">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h3>Download Android App</h3>
+                        </div>
+
+                        <div class="apk-body">
+                            <p>Get the <strong>GradeMaster Pro</strong> experience on your phone for offline access.</p>
+
+                            <a href="app-debug.apk" class="download-btn" download>
+                                <i class="fas fa-file-download"></i>
+                                <span>Download APK v1.0</span>
+                            </a>
+
+                            <div class="apk-warning">
+                                <i class="fas fa-info-circle"></i>
+                                <span>প্রথমবার install করতে "Unknown Sources" allow করতে হবে</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -380,9 +400,9 @@
 
     <script src="script.js">
         if ("serviceWorker" in navigator) {
-    navigator.serviceWorker.register("/service-worker.js")
-      .then(() => console.log("SW Registered"));
-  }
+            navigator.serviceWorker.register("/service-worker.js")
+                .then(() => console.log("SW Registered"));
+        }
     </script>
 </body>
 
