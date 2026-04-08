@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">EB Grading System</string>
+    <string name="title_activity_main">EB Grading System</string>
+    <string name="package_name">com.eb.gradingsystem</string>
+    <string name="custom_url_scheme">com.eb.gradingsystem</string>
+</resources>

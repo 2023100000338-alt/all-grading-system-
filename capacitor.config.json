@@ -1,0 +1,9 @@
+{
+  "appId": "com.eb.gradingsystem",
+  "appName": "Eb Grading System",
+  "webDir": "www",
+  "server": {
+    "url": "https://eb-grading-sy.vercel.app/",
+    "cleartext": true
+  }
+}
