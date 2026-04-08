@@ -16,7 +16,7 @@ function calculateGPA(subjects) {
     let mainCount = 0;
     let hasFail = false;
     let fourthBonus = 0;
-    
+
     for (let sub of subjects) {
         let marksVal = sub.marks.trim() === "" ? NaN : parseFloat(sub.marks);
         if (isNaN(marksVal) || marksVal < 0 || marksVal > 100) {
@@ -31,10 +31,10 @@ function calculateGPA(subjects) {
             if (gp === 0.0) hasFail = true;
         }
     }
-    
+
     if (mainCount === 0) return { gpa: null, error: "No main subjects", failed: false };
     if (hasFail) return { gpa: 0.0, failed: true, error: null };
-    
+
     let rawGpa = (totalPoints + fourthBonus) / mainCount;
     let finalGpa = Math.min(5.0, Math.max(0, rawGpa));
     return { gpa: finalGpa, failed: false, error: null };
@@ -63,7 +63,7 @@ class ExamManager {
         this.subjects = [];
         this.init();
     }
-    
+
     init() {
         this.loadGroupSubjects();
         this.groupSelect.addEventListener('change', () => this.loadGroupSubjects());
@@ -71,7 +71,7 @@ class ExamManager {
         this.calcBtn.addEventListener('click', () => this.calculate());
         this.resetBtn.addEventListener('click', () => this.loadGroupSubjects());
     }
-    
+
     loadGroupSubjects() {
         const group = this.groupSelect.value;
         const subjectNames = this.defaultMap[group] || ["Bangla", "English", "ICT", "Mathematics", "Physics"];
@@ -82,7 +82,7 @@ class ExamManager {
         }));
         this.render();
     }
-    
+
     render() {
         this.container.innerHTML = '';
         this.subjects.forEach((sub, idx) => {
@@ -98,21 +98,21 @@ class ExamManager {
             `;
             this.container.appendChild(div);
         });
-        
+
         this.container.querySelectorAll('.subj-name').forEach(inp => {
             inp.addEventListener('change', (e) => {
                 let idx = e.target.dataset.idx;
                 this.subjects[idx].name = e.target.value;
             });
         });
-        
+
         this.container.querySelectorAll('.marks-input').forEach(inp => {
             inp.addEventListener('input', (e) => {
                 let idx = e.target.dataset.idx;
                 this.subjects[idx].marks = e.target.value;
             });
         });
-        
+
         this.container.querySelectorAll('.fourth-check').forEach(ch => {
             ch.addEventListener('change', (e) => {
                 let idx = e.target.dataset.idx;
@@ -120,7 +120,7 @@ class ExamManager {
                 this.render();
             });
         });
-        
+
         this.container.querySelectorAll('.remove-subj').forEach(btn => {
             btn.addEventListener('click', (e) => {
                 let idx = btn.dataset.idx;
@@ -129,12 +129,12 @@ class ExamManager {
             });
         });
     }
-    
+
     addSubject() {
         this.subjects.push({ name: "New Subject", marks: "", isFourth: false });
         this.render();
     }
-    
+
     calculate() {
         const result = calculateGPA(this.subjects);
         if (result.error) {
@@ -142,11 +142,11 @@ class ExamManager {
             this.resultDiv.innerHTML = `<div class="fail-message"><i class="fas fa-exclamation-circle"></i> ${result.error}</div>`;
             return;
         }
-        
+
         let gpa = result.gpa;
         let gradeLetter = getGradeLetter(gpa);
         this.resultDiv.style.display = 'block';
-        
+
         if (result.failed) {
             this.resultDiv.innerHTML = `
                 <div class="result-gpa">0.00</div>
@@ -161,12 +161,12 @@ class ExamManager {
                 <p><i class="fas fa-check-circle"></i> 4th subject bonus applied automatically</p>
             `;
         }
-        
+
         this.resultDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
-    
+
     escapeHtml(str) {
-        return str.replace(/[&<>]/g, function(m) {
+        return str.replace(/[&<>]/g, function (m) {
             if (m === '&') return '&amp;';
             if (m === '<') return '&lt;';
             if (m === '>') return '&gt;';
@@ -194,19 +194,15 @@ const hscManager = new ExamManager('hscSubjectsContainer', 'hscGroup', 'addHscSu
 
 // Navigation
 const navItems = document.querySelectorAll('.nav-item, .bottom-nav-item');
-// Update the sections array in your existing script.js
-// Find this line and update it:
-
 const sections = ['ssc', 'hsc', 'cgpa', 'gradetable', 'about'];
 
-// The rest of your script.js remains the same
 function switchTab(tabId) {
     sections.forEach(section => {
         const sectionEl = document.getElementById(`${section}Section`);
         if (sectionEl) sectionEl.classList.remove('active');
     });
     document.getElementById(`${tabId}Section`).classList.add('active');
-    
+
     navItems.forEach(item => {
         if (item.dataset.tab === tabId) {
             item.classList.add('active');
@@ -214,7 +210,7 @@ function switchTab(tabId) {
             item.classList.remove('active');
         }
     });
-    
+
     localStorage.setItem('activeTab', tabId);
 }
 
