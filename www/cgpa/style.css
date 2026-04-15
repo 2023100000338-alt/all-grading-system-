@@ -1,0 +1,494 @@
+/* Complete CGPA Styles - Add to your style.css */
+
+/* CGPA Card */
+.cgpa-card {
+    background: var(--card-bg);
+    transition: all 0.3s ease;
+    margin-bottom: 2rem;
+}
+
+.cgpa-card .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* Add Semester Button */
+.btn-add-semester {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white !important;
+    border: none;
+    padding: 0.7rem 1.4rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.btn-add-semester:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.3);
+}
+
+/* Semester Card */
+.semester-card {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+[data-theme="light"] .semester-card {
+    background: #ffffff;
+    border-color: #e2e8f0;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+[data-theme="dark"] .semester-card {
+    background: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+.semester-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.semester-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.semester-title i {
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.btn-remove-semester {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.btn-remove-semester:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Courses Container */
+.courses-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* Course Row */
+.course-row {
+    display: grid;
+    grid-template-columns: 2fr 0.8fr 1.2fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem;
+    background: var(--bg-primary);
+    border-radius: 14px;
+    transition: all 0.2s ease;
+    border: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .course-row {
+    background: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+[data-theme="dark"] .course-row {
+    background: #0f172a;
+    border-color: #334155;
+}
+
+.course-row:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* Inputs and Selects */
+.course-row input, 
+.course-row select {
+    padding: 0.7rem;
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.2s ease;
+}
+
+[data-theme="light"] .course-row input,
+[data-theme="light"] .course-row select {
+    background: #ffffff;
+    color: #1e293b;
+    border-color: #cbd5e1;
+}
+
+[data-theme="dark"] .course-row input,
+[data-theme="dark"] .course-row select {
+    background: #1e293b;
+    color: #f1f5f9;
+    border-color: #475569;
+}
+
+.course-row input:focus,
+.course-row select:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.course-row input::placeholder {
+    color: #94a3b8;
+}
+
+[data-theme="dark"] .course-row input::placeholder {
+    color: #64748b;
+}
+
+/* Remove Course Button */
+.btn-remove-course {
+    background: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.5rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-remove-course:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* Add Course Button - FIXED: Always visible */
+.btn-add-course {
+    background: var(--primary-color);
+    color: white !important;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-add-course:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.btn-add-course:active {
+    transform: translateY(0);
+}
+
+/* Result Card */
+.result-card {
+    margin-top: 1.5rem;
+    padding: 1.8rem;
+    border-radius: 24px;
+    text-align: center;
+    color: white;
+    animation: slideUp 0.4s ease;
+}
+
+.result-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.result-card .cgpa-value {
+    font-size: 3.5rem;
+    font-weight: 800;
+    margin: 0.5rem 0;
+    letter-spacing: -0.02em;
+}
+
+.result-card .total-info {
+    font-size: 0.9rem;
+    opacity: 0.95;
+    margin-top: 0.5rem;
+}
+
+/* Grade Scale Reference Card */
+.grade-scale-reference {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 1.5rem;
+    margin-top: 2rem;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+}
+
+[data-theme="light"] .grade-scale-reference {
+    background: #ffffff;
+    border-color: #e2e8f0;
+}
+
+[data-theme="dark"] .grade-scale-reference {
+    background: #1e293b;
+    border-color: #334155;
+}
+
+.reference-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.reference-header i {
+    font-size: 1.5rem;
+    color: var(--primary-color);
+}
+
+.reference-header h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0;
+}
+
+.uni-grade-table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.uni-grade-table th,
+.uni-grade-table td {
+    padding: 0.8rem;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+[data-theme="light"] .uni-grade-table th {
+    background: #f1f5f9;
+    color: #1e293b;
+}
+
+[data-theme="dark"] .uni-grade-table th {
+    background: #0f172a;
+    color: #f1f5f9;
+}
+
+[data-theme="light"] .uni-grade-table td {
+    background: #ffffff;
+    color: #334155;
+}
+
+[data-theme="dark"] .uni-grade-table td {
+    background: #1e293b;
+    color: #cbd5e1;
+}
+
+.uni-grade-table .success-text {
+    color: #10b981;
+    font-weight: 600;
+}
+
+.uni-grade-table .good-text {
+    color: #3b82f6;
+    font-weight: 600;
+}
+
+.uni-grade-table .danger-text {
+    color: #ef4444;
+    font-weight: 600;
+}
+
+.uni-grade-table .fail-row td {
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.reference-note {
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: rgba(99, 102, 241, 0.1);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .course-row {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+    
+    .btn-remove-course {
+        width: 100%;
+        height: 40px;
+    }
+    
+    .semester-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+    }
+    
+    .btn-remove-semester {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .cgpa-value {
+        font-size: 2.5rem !important;
+    }
+    
+    .btn-add-semester {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .card-header {
+        flex-direction: column;
+    }
+    
+    .uni-grade-table th,
+    .uni-grade-table td {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+    
+    .reference-header h3 {
+        font-size: 1rem;
+    }
+    
+    .reference-note {
+        font-size: 0.7rem;
+        flex-wrap: wrap;
+    }
+}
+
+/* Tablet Responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .course-row {
+        grid-template-columns: 1.5fr 0.8fr 1.2fr auto;
+        gap: 0.8rem;
+    }
+    
+    .uni-grade-table th,
+    .uni-grade-table td {
+        padding: 0.6rem;
+        font-size: 0.85rem;
+    }
+}
+
+/* Animations */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Fix for Add Course Button in Dark Mode */
+.btn-add-course {
+    background: var(--primary-color);
+    color: white !important;
+    border: none;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+/* Force white text in both themes */
+.btn-add-course,
+.btn-add-course i,
+.btn-add-course span,
+.btn-add-course * {
+    color: white !important;
+}
+
+/* Dark mode specific override */
+[data-theme="dark"] .btn-add-course,
+[data-theme="dark"] .btn-add-course i,
+[data-theme="dark"] .btn-add-course span,
+[data-theme="dark"] .btn-add-course * {
+    color: white !important;
+}
+
+/* Make button background brighter in dark mode */
+[data-theme="dark"] .btn-add-course {
+    background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%) !important;
+}
+
+/* Light mode button background */
+[data-theme="light"] .btn-add-course {
+    background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%) !important;
+}
+
+.btn-add-course:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
